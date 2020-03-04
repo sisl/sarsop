@@ -17,7 +17,7 @@
 
 #include "CPTimer.h"
 
-#ifdef _MSC_VER
+#ifdef _WIN32
 #else
 //for timing
 #include <sys/param.h>

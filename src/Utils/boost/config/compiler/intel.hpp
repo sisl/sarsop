@@ -35,14 +35,14 @@
 #  define BOOST_INTEL_LINUX BOOST_INTEL
 #endif
 
-#if (BOOST_INTEL_CXX_VERSION <= 500) && defined(_MSC_VER)
+#if (BOOST_INTEL_CXX_VERSION <= 500) && defined(_WIN32)
 #  define BOOST_NO_EXPLICIT_FUNCTION_TEMPLATE_ARGUMENTS
 #  define BOOST_NO_TEMPLATE_TEMPLATES
 #endif
 
 #if (BOOST_INTEL_CXX_VERSION <= 600)
 
-#  if defined(_MSC_VER) && (_MSC_VER <= 1300) // added check for <= VC 7 (Peter Dimov)
+#  if defined(_WIN32) && (_WIN32 <= 1300) // added check for <= VC 7 (Peter Dimov)
 
 // Boost libraries assume strong standard conformance unless otherwise
 // indicated by a config macro. As configured by Intel, the EDG front-end
@@ -60,7 +60,7 @@
 
 // Void returns, 64 bit integrals don't work when emulating VC 6 (Peter Dimov)
 
-#  if defined(_MSC_VER) && (_MSC_VER <= 1200)
+#  if defined(_WIN32) && (_WIN32 <= 1200)
 #     define BOOST_NO_VOID_RETURNS
 #     define BOOST_NO_INTEGRAL_INT64_T
 #  endif
@@ -123,8 +123,8 @@ template<> struct assert_intrinsic_wchar_t<wchar_t> {};
 template<> struct assert_intrinsic_wchar_t<unsigned short> {};
 #endif
 
-#if _MSC_VER+0 >= 1000
-#  if _MSC_VER >= 1200
+#if _WIN32+0 >= 1000
+#  if _WIN32 >= 1200
 #     define BOOST_HAS_MS_INT64
 #  endif
 #  define BOOST_NO_SWPRINTF
@@ -184,7 +184,7 @@ template<> struct assert_intrinsic_wchar_t<unsigned short> {};
 #if (BOOST_INTEL_CXX_VERSION > 1100)
 #  if defined(BOOST_ASSERT_CONFIG)
 #     error "Unknown compiler version - please run the configure tests and report the results"
-#  elif defined(_MSC_VER)
+#  elif defined(_WIN32)
 //
 //      We don't emit this warning any more, since we have so few
 //      defect macros set anyway (just the one).

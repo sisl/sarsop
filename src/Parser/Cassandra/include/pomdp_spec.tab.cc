@@ -298,7 +298,7 @@ typedef unsigned char yytype_uint8;
 #ifdef YYTYPE_INT8
 typedef YYTYPE_INT8 yytype_int8;
 #elif (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+     || defined __cplusplus || defined _WIN32)
 typedef signed char yytype_int8;
 #else
 typedef short int yytype_int8;
@@ -322,7 +322,7 @@ typedef short int yytype_int16;
 # elif defined size_t
 #  define YYSIZE_T size_t
 # elif ! defined YYSIZE_T && (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+     || defined __cplusplus || defined _WIN32)
 #  include <stddef.h> /* INFRINGES ON USER NAME SPACE */
 #  define YYSIZE_T size_t
 # else
@@ -356,7 +356,7 @@ typedef short int yytype_int16;
 # define YYID(n) (n)
 #else
 #if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+     || defined __cplusplus || defined _WIN32)
 static int
 YYID (int i)
 #else
@@ -381,13 +381,13 @@ YYID (i)
 #    include <alloca.h> /* INFRINGES ON USER NAME SPACE */
 #   elif defined _AIX
 #    define YYSTACK_ALLOC __alloca
-#   elif defined _MSC_VER
+#   elif defined _WIN32
 #    include <malloc.h> /* INFRINGES ON USER NAME SPACE */
 #    define alloca _alloca
 #   else
 #    define YYSTACK_ALLOC alloca
 #    if ! defined _ALLOCA_H && ! defined _STDLIB_H && (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+     || defined __cplusplus || defined _WIN32)
 #     include <stdlib.h> /* INFRINGES ON USER NAME SPACE */
 #     ifndef _STDLIB_H
 #      define _STDLIB_H 1
@@ -424,14 +424,14 @@ YYID (i)
 #  ifndef YYMALLOC
 #   define YYMALLOC malloc
 #   if ! defined malloc && ! defined _STDLIB_H && (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+     || defined __cplusplus || defined _WIN32)
 void *malloc (YYSIZE_T); /* INFRINGES ON USER NAME SPACE */
 #   endif
 #  endif
 #  ifndef YYFREE
 #   define YYFREE free
 #   if ! defined free && ! defined _STDLIB_H && (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+     || defined __cplusplus || defined _WIN32)
 void free (void *); /* INFRINGES ON USER NAME SPACE */
 #   endif
 #  endif
@@ -917,7 +917,7 @@ do {									  \
 
 /*ARGSUSED*/
 #if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+     || defined __cplusplus || defined _WIN32)
 static void
 yy_symbol_value_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep)
 #else
@@ -949,7 +949,7 @@ yy_symbol_value_print (yyoutput, yytype, yyvaluep)
 `--------------------------------*/
 
 #if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+     || defined __cplusplus || defined _WIN32)
 static void
 yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep)
 #else
@@ -975,7 +975,7 @@ yy_symbol_print (yyoutput, yytype, yyvaluep)
 `------------------------------------------------------------------*/
 
 #if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+     || defined __cplusplus || defined _WIN32)
 static void
 yy_stack_print (yytype_int16 *bottom, yytype_int16 *top)
 #else
@@ -1003,7 +1003,7 @@ do {								\
 `------------------------------------------------*/
 
 #if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+     || defined __cplusplus || defined _WIN32)
 static void
 yy_reduce_print (YYSTYPE *yyvsp, int yyrule)
 #else
@@ -1072,7 +1072,7 @@ int yydebug;
 #  else
 /* Return the length of YYSTR.  */
 #if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+     || defined __cplusplus || defined _WIN32)
 static YYSIZE_T
 yystrlen (const char *yystr)
 #else
@@ -1096,7 +1096,7 @@ yystrlen (yystr)
 /* Copy YYSRC to YYDEST, returning the address of the terminating '\0' in
    YYDEST.  */
 #if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+     || defined __cplusplus || defined _WIN32)
 static char *
 yystpcpy (char *yydest, const char *yysrc)
 #else
@@ -1281,7 +1281,7 @@ yysyntax_error (char *yyresult, int yystate, int yychar)
 
 /*ARGSUSED*/
 #if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+     || defined __cplusplus || defined _WIN32)
 static void
 yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep)
 #else
@@ -1342,7 +1342,7 @@ int yynerrs;
 
 #ifdef YYPARSE_PARAM
 #if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+     || defined __cplusplus || defined _WIN32)
 int
 yyparse (void *YYPARSE_PARAM)
 #else
@@ -1352,7 +1352,7 @@ yyparse (YYPARSE_PARAM)
 #endif
 #else /* ! YYPARSE_PARAM */
 #if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+     || defined __cplusplus || defined _WIN32)
 int
 yyparse (void)
 #else

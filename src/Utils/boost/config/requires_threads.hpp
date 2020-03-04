@@ -74,11 +74,11 @@
 //  IBM Visual Age
 #   error "Compiler threading support is not turned on. Please compile the code with the xlC_r compiler"
 
-#elif defined _MSC_VER
+#elif defined _WIN32
 //  Microsoft Visual C++
 //
 //  Must remain the last #elif since some other vendors (Metrowerks, for
-//  example) also #define _MSC_VER
+//  example) also #define _WIN32
 #  error "Compiler threading support is not turned on. Please set the correct command line options for threading: either /MT /MTd /MD or /MDd"
 
 #else

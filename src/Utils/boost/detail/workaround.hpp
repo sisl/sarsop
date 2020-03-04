@@ -50,10 +50,10 @@
 #else
 #define __CODEGEARC___WORKAROUND_GUARD 0
 #endif
-#ifndef _MSC_VER
-#define _MSC_VER_WORKAROUND_GUARD 1
+#ifndef _WIN32
+#define _WIN32_WORKAROUND_GUARD 1
 #else
-#define _MSC_VER_WORKAROUND_GUARD 0
+#define _WIN32_WORKAROUND_GUARD 0
 #endif
 #ifndef _MSC_FULL_VER
 #define _MSC_FULL_VER_WORKAROUND_GUARD 1

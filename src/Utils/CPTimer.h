@@ -10,7 +10,7 @@
 
 
 
-#ifdef _MSC_VER
+#ifdef _WIN32
 
 #include <ctime>
 
@@ -28,7 +28,7 @@
 
 class CPTimer
 {
-#ifdef _MSC_VER	
+#ifdef _WIN32	
 	// Windows visual studio version
 public:
 	CPTimer()

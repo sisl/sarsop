@@ -16,7 +16,7 @@
 // those platforms where we can know for sure). It will get turned off again
 // later if no threading API is detected.
 //
-#if !defined(__MINGW32__) && !defined(_MSC_VER) && !defined(linux) && !defined(__linux) && !defined(__linux__)
+#if !defined(__MINGW32__) && !defined(_WIN32) && !defined(linux) && !defined(__linux) && !defined(__linux__)
 # define BOOST_HAS_THREADS
 #endif 
 

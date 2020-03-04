@@ -30,7 +30,7 @@
 #ifndef BOOST_CONFIG_WARNING_DISABLE_HPP
 #define BOOST_CONFIG_WARNING_DISABLE_HPP
 
-#if defined(_MSC_VER) && (_MSC_VER >= 1400) 
+#if defined(_WIN32) && (_WIN32 >= 1400) 
    // Error 'function': was declared deprecated
    // http://msdn2.microsoft.com/en-us/library/ttcz0bys(VS.80).aspx
    // This error is emitted when you use some perfectly conforming

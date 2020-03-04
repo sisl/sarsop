@@ -9,7 +9,7 @@
 	# include <mach/mach_init.h>
 #else
 
-	#ifdef _MSC_VER
+	#ifdef _WIN32
 
 		#include <Windows.h>
 		#include <Psapi.h>

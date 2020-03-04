@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <cfloat>
 
-#ifdef _MSC_VER
+#ifdef _WIN32
 #include "getopt.h"
 #define NOMINMAX 
 #include <windows.h> 
@@ -69,7 +69,7 @@ OutputParams::OutputParams(void) {
 }
 
 
-#ifdef _MSC_VER
+#ifdef _WIN32
 BOOL CtrlHandler( DWORD fdwCtrlType ) 
 { 
 	switch( fdwCtrlType ) 
@@ -459,7 +459,7 @@ int main(int argc, char **argv)
 		//	struct tms now1, now2;
 		//	float utime, stime;
 
-#ifdef _MSC_VER
+#ifdef _WIN32
 		registerCtrlHanler();
 #else
 		setSignalHandler(SIGINT, &sigIntHandler);

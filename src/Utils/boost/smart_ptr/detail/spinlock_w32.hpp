@@ -3,7 +3,7 @@
 
 // MS compatible compilers support #pragma once
 
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
+#if defined(_WIN32) 
 # pragma once
 #endif
 
@@ -24,7 +24,7 @@
 
 #define BOOST_COMPILER_FENCE __memory_barrier();
 
-#elif defined( _MSC_VER ) && _MSC_VER >= 1310
+#elif defined( _WIN32 ) 
 
 extern "C" void _ReadWriteBarrier();
 #pragma intrinsic( _ReadWriteBarrier )

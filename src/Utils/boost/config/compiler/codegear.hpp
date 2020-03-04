@@ -144,7 +144,7 @@
 // MSVC compatibility mode does some nasty things:
 // TODO: look up if this doesn't apply to the whole 12xx range
 //
-#if defined(_MSC_VER) && (_MSC_VER <= 1200)
+#if defined(_WIN32) && (_WIN32 <= 1200)
 #  define BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
 #  define BOOST_NO_VOID_RETURNS
 #endif

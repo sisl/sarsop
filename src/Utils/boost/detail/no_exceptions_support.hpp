@@ -1,7 +1,7 @@
 #ifndef BOOST_DETAIL_NO_EXCEPTIONS_SUPPORT_HPP_
 #define BOOST_DETAIL_NO_EXCEPTIONS_SUPPORT_HPP_
 
-#if (defined _MSC_VER) && (_MSC_VER >= 1200)
+#if (defined _WIN32) && (_WIN32 >= 1200)
 #  pragma once
 #endif
 

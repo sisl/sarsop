@@ -12,12 +12,12 @@
 
 //  Microsoft Visual C++ compiler setup:
 
-#define BOOST_MSVC _MSC_VER
+#define BOOST_MSVC _WIN32
 
 // turn off the warnings before we #include anything
 #pragma warning( disable : 4503 ) // warning: decorated name length exceeded
 
-#if _MSC_VER < 1300  // 1200 == VC++ 6.0, 1200-1202 == eVC++4
+#if _WIN32 < 1300  // 1200 == VC++ 6.0, 1200-1202 == eVC++4
 #  pragma warning( disable : 4786 ) // ident trunc to '255' chars in debug info
 #  define BOOST_NO_DEPENDENT_TYPES_IN_TEMPLATE_VALUE_PARAMETERS
 #  define BOOST_NO_VOID_RETURNS
@@ -31,7 +31,7 @@
    //
 #endif
 
-#if (_MSC_VER <= 1300)  // 1300 == VC++ 7.0
+#if (_WIN32 <= 1300)  // 1300 == VC++ 7.0
 
 #  if !defined(_MSC_EXTENSIONS) && !defined(BOOST_NO_DEPENDENT_TYPES_IN_TEMPLATE_VALUE_PARAMETERS)      // VC7 bug with /Za
 #    define BOOST_NO_DEPENDENT_TYPES_IN_TEMPLATE_VALUE_PARAMETERS
@@ -63,13 +63,13 @@
 #  define BOOST_NO_IS_ABSTRACT
 #  define BOOST_NO_FUNCTION_TYPE_SPECIALIZATIONS
 // TODO: what version is meant here? Have there really been any fixes in cl 12.01 (as e.g. shipped with eVC4)?
-#  if (_MSC_VER > 1200)
+#  if (_WIN32 > 1200)
 #     define BOOST_NO_MEMBER_FUNCTION_SPECIALIZATIONS
 #  endif
 
 #endif
 
-#if _MSC_VER < 1400 
+#if _WIN32 < 1400 
 // although a conforming signature for swprint exists in VC7.1
 // it appears not to actually work:
 #  define BOOST_NO_SWPRINTF
@@ -80,20 +80,20 @@
 #  define BOOST_NO_SWPRINTF
 #endif
 
-#if _MSC_VER <= 1400  // 1400 == VC++ 8.0
+#if _WIN32 <= 1400  // 1400 == VC++ 8.0
 #  define BOOST_NO_MEMBER_TEMPLATE_FRIENDS
 #endif
 
-#if _MSC_VER <= 1600  // 1600 == VC++ 10.0
+#if _WIN32 <= 1600  // 1600 == VC++ 10.0
 #  define BOOST_NO_TWO_PHASE_NAME_LOOKUP
 #endif
 
-#if _MSC_VER == 1500  // 1500 == VC++ 9.0
+#if _WIN32 == 1500  // 1500 == VC++ 9.0
    // A bug in VC9:
 #  define BOOST_NO_ADL_BARRIER
 #endif
 
-#if _MSC_VER <= 1500  || !defined(BOOST_STRICT_CONFIG) // 1500 == VC++ 9.0
+#if _WIN32 <= 1500  || !defined(BOOST_STRICT_CONFIG) // 1500 == VC++ 9.0
 #  define BOOST_NO_INITIALIZER_LISTS
 #endif
 
@@ -116,15 +116,15 @@
 //
 // __int64 support:
 //
-#if (_MSC_VER >= 1200)
+#if (_WIN32 >= 1200)
 #   define BOOST_HAS_MS_INT64
 #endif
-#if (_MSC_VER >= 1310) && defined(_MSC_EXTENSIONS)
+#if (_WIN32 >= 1310) && defined(_MSC_EXTENSIONS)
 #   define BOOST_HAS_LONG_LONG
 #else
 #   define BOOST_NO_LONG_LONG
 #endif
-#if (_MSC_VER >= 1400) && !defined(_DEBUG)
+#if (_WIN32 >= 1400) && !defined(_DEBUG)
 #   define BOOST_HAS_NRVO
 #endif
 //
@@ -160,12 +160,12 @@
 #define BOOST_NO_VARIADIC_TEMPLATES
 
 // MSVC 2010 CTP has some support for C++0x, but we still disable it until the compiler release
-// #if _MSC_VER < 1600
+// #if _WIN32 < 1600
 #define BOOST_NO_RVALUE_REFERENCES
 #define BOOST_NO_STATIC_ASSERT
 #define BOOST_NO_AUTO_DECLARATIONS
 #define BOOST_NO_AUTO_MULTIDECLARATIONS
-// #endif // _MSC_VER < 1600
+// #endif // _WIN32 < 1600
 
 //
 // prefix and suffix headers:
@@ -184,15 +184,15 @@
 // were shipped with freely downloadable SDKs, others as crosscompilers in eVC.
 // IOW, you can't use these 'versions' in any sensible way. Sorry.
 # if defined(UNDER_CE)
-#   if _MSC_VER < 1200
+#   if _WIN32 < 1200
       // Note: these are so far off, they are not really supported
-#   elif _MSC_VER < 1300 // eVC++ 4 comes with 1200-1202
+#   elif _WIN32 < 1300 // eVC++ 4 comes with 1200-1202
 #     define BOOST_COMPILER_VERSION evc4.0
-#   elif _MSC_VER == 1400
+#   elif _WIN32 == 1400
 #     define BOOST_COMPILER_VERSION evc8
-#   elif _MSC_VER == 1500
+#   elif _WIN32 == 1500
 #     define BOOST_COMPILER_VERSION evc9
-#   elif _MSC_VER == 1600
+#   elif _WIN32 == 1600
 #     define BOOST_COMPILER_VERSION evc10
 #   else
 #      if defined(BOOST_ASSERT_CONFIG)
@@ -202,23 +202,23 @@
 #      endif
 #   endif
 # else
-#   if _MSC_VER < 1200
+#   if _WIN32 < 1200
       // Note: these are so far off, they are not really supported
 #     define BOOST_COMPILER_VERSION 5.0
-#   elif _MSC_VER < 1300
+#   elif _WIN32 < 1300
 #       define BOOST_COMPILER_VERSION 6.0
-#   elif _MSC_VER == 1300
+#   elif _WIN32 == 1300
 #     define BOOST_COMPILER_VERSION 7.0
-#   elif _MSC_VER == 1310
+#   elif _WIN32 == 1310
 #     define BOOST_COMPILER_VERSION 7.1
-#   elif _MSC_VER == 1400
+#   elif _WIN32 == 1400
 #     define BOOST_COMPILER_VERSION 8.0
-#   elif _MSC_VER == 1500
+#   elif _WIN32 == 1500
 #     define BOOST_COMPILER_VERSION 9.0
-#   elif _MSC_VER == 1600
+#   elif _WIN32 == 1600
 #     define BOOST_COMPILER_VERSION 10.0
 #   else
-#     define BOOST_COMPILER_VERSION _MSC_VER
+#     define BOOST_COMPILER_VERSION _WIN32
 #   endif
 # endif
 
@@ -227,12 +227,12 @@
 //
 // versions check:
 // we don't support Visual C++ prior to version 6:
-#if _MSC_VER < 1200
+#if _WIN32 < 1200
 #error "Compiler not supported or configured - please reconfigure"
 #endif
 //
 // last known and checked version is 1500 (VC9):
-#if (_MSC_VER > 1600)
+#if (_WIN32 > 1600)
 #  if defined(BOOST_ASSERT_CONFIG)
 #     error "Unknown compiler version - please run the configure tests and report the results"
 #  else

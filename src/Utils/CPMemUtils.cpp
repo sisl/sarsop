@@ -27,7 +27,7 @@ unsigned long getPhysicalMemorySize()
  
 #else
 
-#ifdef _MSC_VER
+#ifdef _WIN32
 	MEMORYSTATUSEX statex;
 
 	statex.dwLength = sizeof (statex);
@@ -74,7 +74,7 @@ unsigned long getCurrentProcessMemoryUsage()
     return size;
 
 #else
-#ifdef _MSC_VER
+#ifdef _WIN32
 	// Open current process
 	HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, GetCurrentProcessId());
 
@@ -124,7 +124,7 @@ unsigned long getPlatformMemoryLimit()
 #ifdef __APPLE__
 
 #else
-#ifdef _MSC_VER
+#ifdef _WIN32
 
 
 #else

@@ -26,7 +26,7 @@ permissions and limitations under the License.
 
 #include <assert.h>
 #include <stdlib.h>
-#ifdef _MSC_VER
+#ifdef _WIN32
 #else
 #include <unistd.h>
 #include <sys/time.h>

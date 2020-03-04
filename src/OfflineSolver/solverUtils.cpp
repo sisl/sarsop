@@ -9,12 +9,12 @@
 #include <sstream>
 #include "GlobalResource.h"
 
-#ifdef _MSC_VER
+#ifdef _WIN32
 #else
 #include <unistd.h>
 #endif
 
-#if defined(_MSC_VER) || defined(_CYGWIN)
+#if defined(_WIN32) || defined(_CYGWIN)
 #include "getopt.h"
 #else
 #include <getopt.h>

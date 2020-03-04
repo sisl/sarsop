@@ -73,11 +73,11 @@ BOOST_LIB_VERSION:    The Boost version, in the form x_y, for Boost version x.y.
 #  ifndef BOOST_CONFIG_HPP
 #     include <boost/config.hpp>
 #  endif
-#elif defined(_MSC_VER) && !defined(__MWERKS__) && !defined(__EDG_VERSION__)
+#elif defined(_WIN32) && !defined(__MWERKS__) && !defined(__EDG_VERSION__)
 //
 // C language compatability (no, honestly)
 //
-#  define BOOST_MSVC _MSC_VER
+#  define BOOST_MSVC _WIN32
 #  define BOOST_STRINGIZE(X) BOOST_DO_STRINGIZE(X)
 #  define BOOST_DO_STRINGIZE(X) #X
 #endif
@@ -87,7 +87,7 @@ BOOST_LIB_VERSION:    The Boost version, in the form x_y, for Boost version x.y.
 #if defined(BOOST_MSVC) \
     || defined(__BORLANDC__) \
     || (defined(__MWERKS__) && defined(_WIN32) && (__MWERKS__ >= 0x3000)) \
-    || (defined(__ICL) && defined(_MSC_EXTENSIONS) && (_MSC_VER >= 1200))
+    || (defined(__ICL) && defined(_MSC_EXTENSIONS) && (_WIN32 >= 1200))
 
 #ifndef BOOST_VERSION_HPP
 #  include <boost/version.hpp>
@@ -177,7 +177,7 @@ BOOST_LIB_VERSION:    The Boost version, in the form x_y, for Boost version x.y.
 #  define BOOST_LIB_THREAD_OPT
 #endif
 
-#if defined(_MSC_VER) || defined(__MWERKS__)
+#if defined(_WIN32) || defined(__MWERKS__)
 
 #  ifdef _DLL
 
@@ -326,7 +326,7 @@ BOOST_LIB_VERSION:    The Boost version, in the form x_y, for Boost version x.y.
 #endif
 
 
-#endif // _MSC_VER || __BORLANDC__
+#endif // _WIN32 || __BORLANDC__
 
 //
 // finally undef any macros we may have set:

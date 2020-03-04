@@ -6,7 +6,7 @@
 
 
 #include <stdlib.h>
-#ifdef _MSC_VER
+#ifdef _WIN32
 #else
 #include <unistd.h>
 #endif

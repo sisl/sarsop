@@ -104,11 +104,11 @@
 //  Portland Group Inc.
 #   define BOOST_COMPILER_CONFIG "boost/config/compiler/pgi.hpp"
 
-#elif defined _MSC_VER
+#elif defined _WIN32
 //  Microsoft Visual C++
 //
 //  Must remain the last #elif since some other vendors (Metrowerks, for
-//  example) also #define _MSC_VER
+//  example) also #define _WIN32
 #   define BOOST_COMPILER_CONFIG "boost/config/compiler/visualc.hpp"
 
 #elif defined (BOOST_ASSERT_CONFIG)
