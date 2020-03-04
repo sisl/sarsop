@@ -46,8 +46,8 @@ DEPFILE       = Makefile.dep
 uname_O := $(shell sh -c 'uname -o 2>/dev/null || echo not')
 
 ifeq ($(uname_O),Cygwin)
-	CYGWIN_CFLAGS = -D_CYGWIN
-	CYGWIN_INCDIR = -I./miniposix/
+	WIN_CFLAGS = -lpsapi
+	WIN_INCDIR = -I./miniposix/
 endif
 
 
@@ -57,13 +57,13 @@ endif
 
 CC            = gcc
 
-CFLAGS        = -g -w -O3 $(INCDIR) -msse2  -mfpmath=sse $(CYGWIN_CFLAGS)  #-DDEBUG_LOG_ON
+CFLAGS        = -g -w -O3 $(INCDIR) -msse2  -mfpmath=sse $(WIN_CFLAGS)  #-DDEBUG_LOG_ON
 
 CXX           = g++
 
 CXXFLAGS      = $(CFLAGS)
 
-INCDIR	      = -I./MathLib -I./Algorithms -I./Algorithms/HSVI -I./Algorithms/SARSOP -I./Models/MOMDP/ -I./Models/MOMDP/CoLoc/ -I./OfflineSolver/ -I./Bounds/ -I./Core/ -I./Parser/Cassandra/ -I./Parser/Cassandra/include -I./Parser/ -I./Parser/POMDPX/ -I./Utils/ -I./Simulator/ -I./Evaluator/ -I./Controller/ $(CYGWIN_INCDIR)
+INCDIR	      = -I./MathLib -I./Algorithms -I./Algorithms/HSVI -I./Algorithms/SARSOP -I./Models/MOMDP/ -I./Models/MOMDP/CoLoc/ -I./OfflineSolver/ -I./Bounds/ -I./Core/ -I./Parser/Cassandra/ -I./Parser/Cassandra/include -I./Parser/ -I./Parser/POMDPX/ -I./Utils/ -I./Simulator/ -I./Evaluator/ -I./Controller/ $(WIN_INCDIR)
 
 
 # ----------------------------------------------------------------------
@@ -74,7 +74,7 @@ LINKER	      = g++
 
 LDFLAGS	      = -L.
 
-LIBS	      = -lappl
+LIBS	      = -lappl $(WIN_LFLAGS)
 
 
 # ----------------------------------------------------------------------
