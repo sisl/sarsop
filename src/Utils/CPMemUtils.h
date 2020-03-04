@@ -12,7 +12,7 @@
 	#ifdef _WIN32
 
 		#include <windows.h>
-		#include <Psapi.h>
+		#include <psapi.h>
 		#pragma comment(lib,"psapi.lib")
 
 	#else

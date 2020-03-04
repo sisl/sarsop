@@ -12,7 +12,7 @@
 
 using namespace std;
 #ifdef _WIN32
-using namespace stdext;
+// using namespace stdext;
 #endif
 
 #define HashResolveRes 1.0e-7
