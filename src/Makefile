@@ -422,8 +422,8 @@ clean:;		rm -f $(OBJS)
 
 
 install:	$(TARGETS)
-		[ -d ../bin ] || mkdir ../bin
-		[ -d ../lib ] || mkdir ../lib
+		[ -d $(DESTDIR)/bin ] || mkdir $(DESTDIR)/bin
+		[ -d $(DESTDIR)/lib ] || mkdir $(DESTDIR)/lib
 		mv $(TARGET_OFSOL) $(DESTDIR)/bin/$(TARGET_OFSOL)
 		mv $(TARGET_APPL) $(DESTDIR)/lib/$(TARGET_APPL)
 
