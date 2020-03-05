@@ -425,6 +425,10 @@ install:	$(TARGETS)
 		[ -d $(DESTDIR)/bin ] || mkdir $(DESTDIR)/bin
 		[ -d $(DESTDIR)/lib ] || mkdir $(DESTDIR)/lib
 		mv $(TARGET_OFSOL) $(DESTDIR)/bin/$(TARGET_OFSOL)
+		mv $(TARGET_SIM) $(DESTDIR)/bin/$(TARGET_SIM)
+		mv $(TARGET_EVA) $(DESTDIR)/bin/$(TARGET_EVA)
+		mv $(TARGET_GRAPH) $(DESTDIR)/bin/$(TARGET_GRAPH)
+		mv $(TARGET_CONVERT) $(DESTDIR)/bin/$(TARGET_CONVERT)
 		mv $(TARGET_APPL) $(DESTDIR)/lib/$(TARGET_APPL)
 
 depend:;	g++ -MM $(INCDIR) $(HDRS) $(SRCS) > $(DEPFILE)
