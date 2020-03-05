@@ -47,6 +47,7 @@ uname_O := $(shell sh -c 'uname -o 2>/dev/null || echo not')
 
 ifeq ($(uname_O),Cygwin)
 	WIN_CFLAGS = -lpsapi
+	WIN_LFLAGS = -lpsapi
 	WIN_INCDIR = -I./miniposix/
 endif
 
