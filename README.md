@@ -1,4 +1,7 @@
 # SARSOP
+
+This is a fork of [AdaCompNUS/sarsop](https://github.com/AdaCompNUS/sarsop) that contains fixes to cross compile SARSOP on multiple platforms.
+
 Efficient Point-Based POMDP Planning by Approximating
 
 Approximate POMDP Planning (APPL) Toolkit
