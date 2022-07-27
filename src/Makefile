@@ -45,12 +45,18 @@ DEPFILE       = Makefile.dep
 #
 uname_O := $(shell sh -c 'uname -o 2>/dev/null || echo not')
 
-ifeq ($(uname_O),Cygwin)
+ifeq ($(uname_O), Cygwin)
 	WIN_CFLAGS = -lpsapi
 	WIN_LFLAGS = -lpsapi
 	WIN_INCDIR = -I./miniposix/
 endif
 
+# system specific variables, add more here
+
+uname_m := $(shell uname -m)
+ifneq ($(uname_m), aarch64)
+	x86_64_CFLAGS = -mfpmath=sse
+endif
 
 # ----------------------------------------------------------------------
 # Compiler
@@ -58,7 +64,7 @@ endif
 
 CC            = gcc
 
-CFLAGS        = -g -w -O3 $(INCDIR) -msse2  -mfpmath=sse $(WIN_CFLAGS)  #-DDEBUG_LOG_ON
+CFLAGS        = -g -w -O3 $(INCDIR) -msse2 $(x86_64_CFLAGS) $(WIN_CFLAGS)  #-DDEBUG_LOG_ON
 
 CXX           = g++
 
