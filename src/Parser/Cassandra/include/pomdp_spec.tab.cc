@@ -213,8 +213,8 @@ int minObs, maxObs;
     We allocate this memory once we know how big they must be and we
     will free all of this when we convert it to its final sparse format.
     */
-I_Matrix *IP;   /* For transition matrices. */
-I_Matrix *IR;   /* For observation matrices. */
+I_Matrix *IU;   /* For transition matrices. */
+I_Matrix *IV;   /* For observation matrices. */
 I_Matrix **IW;  /* For reward matrices */
 
 /* These variables are used by the parser only, to keep some state
@@ -2731,28 +2731,28 @@ void enterUniformMatrix( ) {
       for( a = minA; a <= maxA; a++ )
          for( i = minI; i <= maxI; i++ )
             for( j = 0; j < gNumStates; j++ )
-	       addEntryToIMatrix( IP[a], i, j, prob );
+	       addEntryToIMatrix( IU[a], i, j, prob );
       break;
    case mc_trans_all:
       prob = 1.0/gNumStates;
       for( a = minA; a <= maxA; a++ )
          for( i = 0; i < gNumStates; i++ )
             for( j = 0; j < gNumStates; j++ )
- 	       addEntryToIMatrix( IP[a], i, j, prob );
+ 	       addEntryToIMatrix( IU[a], i, j, prob );
       break;
    case mc_obs_row:
       prob = 1.0/gNumObservations;
       for( a = minA; a <= maxA; a++ )
          for( j = minJ; j <= maxJ; j++ )
             for( obs = 0; obs < gNumObservations; obs++ )
- 	       addEntryToIMatrix( IR[a], j, obs, prob );
+ 	       addEntryToIMatrix( IV[a], j, obs, prob );
       break;
    case mc_obs_all:
       prob = 1.0/gNumObservations;
       for( a = minA; a <= maxA; a++ )
          for( j = 0; j < gNumStates; j++ )
             for( obs = 0; obs < gNumObservations; obs++ )
- 	       addEntryToIMatrix( IR[a], j, obs, prob );
+ 	       addEntryToIMatrix( IV[a], j, obs, prob );
       break;
    case mc_start_belief:
       setStartStateUniform();
@@ -2778,9 +2778,9 @@ void enterIdentityMatrix( ) {
          for( i = 0; i < gNumStates; i++ )
             for( j = 0; j < gNumStates; j++ )
                if( i == j )
-		 addEntryToIMatrix( IP[a], i, j, 1.0 );
+		 addEntryToIMatrix( IU[a], i, j, 1.0 );
                else
-		 addEntryToIMatrix( IP[a], i, j, 0.0 );
+		 addEntryToIMatrix( IU[a], i, j, 0.0 );
       break;
    default:
       ERR_enter("Parser<enterIdentityMatrix>:", currentLineNumber, 
@@ -2802,12 +2802,12 @@ void enterResetMatrix( ) {
     for( a = minA; a <= maxA; a++ )
       for( i = minI; i <= maxI; i++ )
 	for( j = 0; j < gNumStates; j++ )
-	  addEntryToIMatrix( IP[a], i, j, gInitialBelief[j] );
+	  addEntryToIMatrix( IU[a], i, j, gInitialBelief[j] );
   
   else  /* It is an MDP */
     for( a = minA; a <= maxA; a++ )
       for( i = minI; i <= maxI; i++ )
-	addEntryToIMatrix( IP[a], i, gInitialState, 1.0 );
+	addEntryToIMatrix( IU[a], i, gInitialState, 1.0 );
   
 
 }  /* enterResetMatrix */
@@ -2827,13 +2827,13 @@ void enterMatrix( REAL_VALUE value ) {
       for( a = minA; a <= maxA; a++ )
          for( i = minI; i <= maxI; i++ )
             for( j = minJ; j <= maxJ; j++ )
-	      addEntryToIMatrix( IP[a], i, j, value );
+	      addEntryToIMatrix( IU[a], i, j, value );
       break;
    case mc_trans_row:
       if( curCol < gNumStates ) {
          for( a = minA; a <= maxA; a++ )
             for( i = minI; i <= maxI; i++ )
-	      addEntryToIMatrix( IP[a], i, curCol, value );
+	      addEntryToIMatrix( IU[a], i, curCol, value );
          curCol++;
       }
       else
@@ -2848,7 +2848,7 @@ void enterMatrix( REAL_VALUE value ) {
 
       if( curRow < gNumStates ) {
          for( a = minA; a <= maxA; a++ )
-	   addEntryToIMatrix( IP[a], curRow, curCol, value );
+	   addEntryToIMatrix( IU[a], curRow, curCol, value );
          curCol++;
       } else {
 	gTooManyEntries = 1;
@@ -2864,7 +2864,7 @@ void enterMatrix( REAL_VALUE value ) {
        for( a = minA; a <= maxA; a++ )
 	 for( j = minJ; j <= maxJ; j++ )
 	   for( obs = minObs; obs <= maxObs; obs++ )
-	     addEntryToIMatrix( IR[a], j, obs, value );
+	     addEntryToIMatrix( IV[a], j, obs, value );
      }
      break;
 
@@ -2877,7 +2877,7 @@ void enterMatrix( REAL_VALUE value ) {
 	   
 	   for( a = minA; a <= maxA; a++ ) {
 	     for( j = minJ; j <= maxJ; j++ ) {
-	       addEntryToIMatrix( IR[a], j, curCol, value );
+	       addEntryToIMatrix( IV[a], j, curCol, value );
 	     }
 	   }
 	   curCol++;
@@ -2900,7 +2900,7 @@ void enterMatrix( REAL_VALUE value ) {
 	
 	if( curRow < gNumStates ) {
 	  for( a = minA; a <= maxA; a++ )
-	    addEntryToIMatrix( IR[a], curRow, curCol, value );
+	    addEntryToIMatrix( IV[a], curRow, curCol, value );
 	  
 	  curCol++;
 	} else {
@@ -3324,7 +3324,7 @@ void checkProbs() {
    
    for( a = 0; a < gNumActions; a++ )
       for( i = 0; i < gNumStates; i++ ) {
-	 sum = sumIMatrixRowValues( IP[a], i );
+	 sum = sumIMatrixRowValues( IU[a], i );
          if((sum < ( 1.0 - EPSILON)) || (sum > (1.0 + EPSILON))) {
             sprintf( str, "action=%d, state=%d (%.5lf)", a, i, sum );
             ERR_enter("Parser<checkProbs>:", NO_LINE, 
@@ -3335,7 +3335,7 @@ void checkProbs() {
    if( gProblemType == POMDP_problem_type )
      for( a = 0; a < gNumActions; a++ )
        for( j = 0; j < gNumStates; j++ ) {
-	 sum = sumIMatrixRowValues( IR[a], j );
+	 sum = sumIMatrixRowValues( IV[a], j );
          if((sum < ( 1.0 - EPSILON)) || (sum > (1.0 + EPSILON))) {
 	   sprintf( str, "action=%d, state=%d (%.5lf)", a, j, sum );
 	   ERR_enter("Parser<checkProbs>:", NO_LINE, 
