@@ -31,37 +31,20 @@ APPL is a C++ implementation of the SARSOP algorithm <sup>1</sup>, using the fac
 Tested Operating systems: 
 
 * Linux 
-* Mac OS X (unofficial) (see a fork tested on OSX 10.15.2 [here](https://github.com/personalrobotics/appl))
-* Windows (unofficial)
-
-
-
-Tested compilers:
-
-* gcc/g++ 4.0.1 under Linux
-* gcc/g++ 4.1.2 under Linux
-* gcc/g++ 4.2.3 under Linux
-* gcc/g++ 4.3.2 under Linux
-* gcc/g++ 4.4.0 under Linux
-* gcc/g++ 4.8.1 under Linux
-* gcc/g++ 3.4.4 under Windows (Cygwin)
-* Microsoft Visual C++ 9 in Visual Studio 2008 with SP1 under Windows
+* Mac OS X
+* Windows
 
 
 General:
   For gcc/g++ tool chain, GNU make is required for building.
 
 
-Windows:
-The Visual Studio port is experimental. The generated binaries may behave differently from its Linux counterpart.
-  For Visual Studio 2010, refer to FAQ at http://bigbird.comp.nus.edu.sg/pmwiki/farm/appl/index.php?n=Main.FAQ for more information
-
 ## Quick Start
 
 For Linux or Windows (Cygwin), at the top-level directory, type the commands:
 
 ```bash
-$ git clone https://github.com/AdaCompNUS/sarsop.git
+$ git clone https://github.com/JuliaPOMDP/sarsop
 $ cd sarsop/src
 $ make
 ```
@@ -209,6 +192,10 @@ Part of the APPL toolkit makes use of code based on an early version of ZMDP by 
 Please use the issue tracker.
 
 ## Release Notes
+
+*27-Jul-2022*  
+Fixed MacOS x86_64 compilation errors  
+Adjusted make file cflags to enable MacOS aarch64 support  
 
 *9-Jun-2014*  
 Fixed compilation issues with gcc version >= 4.7  
